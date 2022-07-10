@@ -15,28 +15,19 @@ header {
 }
 main {
   grid-area: main;
+  min-height: 90vh;
 }
 footer {
   grid-area: footer;
   background-color: #121212;
 }
 #nav_icon {
-  height: 6vh;
+  height: 12vh;
 }
 li {
-  font-size: 1vw;
+  font-size: calc(15px + 0.8vw);
 }
-#new_arrival {
-  position: relative;
-}
-#new_arrival::before {
-  content: " ";
-  background-color: black;
-  height: 10px;
-  top: 50%;
-  width: 100%;
-}
-#hr-text {
+.hr-text {
   position: relative;
   outline: 0;
   border: 0;
@@ -44,7 +35,7 @@ li {
   text-align: center;
   opacity: 0.5;
 }
-#hr-text:before {
+.hr-text:before {
   content: " ";
   background: linear-gradient(to right, transparent, #818078, transparent);
   position: absolute;
@@ -54,7 +45,7 @@ li {
   height: 1px;
 }
 
-#hr-text:after {
+.hr-text:after {
   content: attr(data-content);
   position: relative;
   display: inline-block;
@@ -62,4 +53,44 @@ li {
   padding: 0 0.5em;
   background-color: #eaeaea;
   font-size: 5vh;
+}
+.color_circle {
+  height: 5vh;
+  width: 5vh;
+  border-radius: 50%;
+  border: #121212 solid 1px;
+}
+.brand_logo {
+  width: 50%;
+}
+.device_pic {
+  width: 70%;
+}
+.delete_btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 2vw;
+}
+.about_opener {
+  /* background-color: #ff9b04; */
+  /* background: rgb(6, 188, 251);
+  background: linear-gradient(
+    270deg,
+    rgba(6, 188, 251, 1) 0%,
+    rgba(72, 132, 238, 1) 26%
+  ); */
+  background: rgb(66, 55, 143);
+  background: linear-gradient(
+    270deg,
+    rgba(66, 55, 143, 1) 0%,
+    rgba(245, 56, 68, 1) 100%
+  );
+}
+#iconlogo {
+  height: 200px;
+  width: 200px;
+}
+label {
+  font-size: 1.2vw;
 }
