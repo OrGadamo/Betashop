@@ -502,3 +502,78 @@ function loadAboutPage() {
     </div>
     `;
 }
+function loadContactPage() {
+  changer_main.innerHTML = `
+    <div class="container card mt-5">
+    <div class="row bg-white card-body">
+      <div class="col-12 text-center" id="txtimg">
+        <img
+          src="images/black_icon.png"
+          alt=""
+          id="iconlogo"
+          class="col-12"
+        />
+        <div>
+          <h2 class="display-2">Contact Us</h2>
+        </div>
+      </div>
+      <form
+        class="col-12"
+        action="https://formsubmit.co/brber223@gmail.com"
+        method="POST"
+      >
+        <div class="p-2 form-group boxinput">
+          <label for="name">FULL NAME*</label>
+          <input
+            required
+            name="name"
+            class="p-2 form-control textbar"
+            type="text"
+            id="name"
+            placeholder="Enter Your Full Name"
+          />
+        </div>
+        <div class="p-2 form-group boxinput">
+          <label for="email">EMAIL*</label>
+          <input
+            required
+            name="email"
+            type="email"
+            class="form-control textbar"
+            id="email"
+            placeholder="Enter Your Email"
+          />
+        </div>
+        <div class="p-2 form-group boxinput">
+          <label for="number">PHONE*</label>
+          <input
+            type="tel"
+            class="form-control textbar"
+            id="number"
+            placeholder="Enter Your Phone-Number"
+          />
+        </div>
+        <div class="p-2 form-group boxinput">
+          <label for="Message">MESSAGE</label>
+          <textarea
+            required
+            class="form-control textbar"
+            id="Message"
+            placeholder="Your Message"
+            rows="5"
+          ></textarea>
+        </div>
+        <div class="container">
+          <div class="row d-flex justify-content-center">
+            <button type="submit" class="btn btn-dark col-7">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="text-center">
+      <p>contact our call center 24/7:<span> +9728-6409024</span></p>
+    </div>
+  </div>
+    `;
+}
+loadContactPage();
