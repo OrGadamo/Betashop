@@ -1,5 +1,23 @@
 const deviceAPI =
   "https://my-json-server.typicode.com/Jeck99/fake-server/devices";
+const usersAPI = "https://my-json-server.typicode.com/Jeck99/fake-server/users";
+const NewUsers = [];
+const avatarArray = [
+  "images/avatar1.png",
+  "images/avatar2.png",
+  "images/avatar3.png",
+  "images/avatar4.png",
+  "images/avatar5.png",
+  "images/avatar6.png",
+];
+const colorArray = [
+  "#6060ce",
+  "#f64a4a",
+  "#50bf50",
+  "#d9d965",
+  "#7a3e7a",
+  "#eba72b",
+];
 class Device {
   constructor(id, brand, date, ram, price, color, available) {
     this.id = id;
@@ -33,6 +51,24 @@ class Device {
       this.available = `<h2>Available <i class="bi bi-check-lg text-success"></i></h2>`;
     } else {
       this.available = `<h2>Not Available <i class="bi bi-x text-danger"></i></i></h2>`;
+    }
+  }
+}
+class User {
+  constructor(name, age, email, phone, picture, color) {
+    this.name = name;
+    this.age = age;
+    this.email = email;
+    this.phone = phone;
+    if (picture == null) {
+      this.picture = avatarArray[Math.floor(Math.random() * 6)];
+    } else {
+      this.picture = picture;
+    }
+    if (color == null) {
+      this.color = colorArray[Math.floor(Math.random() * 6)];
+    } else {
+      this.color = color;
     }
   }
 }
@@ -556,6 +592,7 @@ function loadContactPage() {
         <div class="p-2 form-group boxinput">
           <label for="Message">MESSAGE</label>
           <textarea
+          name="_subject"
             required
             class="form-control textbar"
             id="Message"
@@ -576,4 +613,105 @@ function loadContactPage() {
   </div>
     `;
 }
-loadContactPage();
+async function getUsersArray() {
+  try {
+    return await fetch(usersAPI).then((res) => res.json());
+  } catch (error) {
+    console.log(error);
+  }
+}
+function loadUsersPage() {
+  changer_main.innerHTML = `
+  <div class="container-fluid p-0">
+        <img src="images/into_pic4.jpeg" class="col-12" alt="" />
+      </div>
+      <div class="cotainer p-5 text-center">
+        <h1 class="display-1">Our Beta Testers</h1>
+        <h3>Here you can find all the information you need on our users, our Beta Testers.</br>
+        This page is for you, the companies to select the beta tester you desire.</br>
+      And for you new users just click on the sign in button on top to register and enter our user list</h3>
+      </div>
+      <div class="container-fluid d-none d-md-block">
+        <table class="table table-dark table-hover">
+          <thead>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Avatar</th>
+          </thead>
+          <tbody id="table_body">
+
+          </tbody>
+        </table>
+      </div>
+      <div id="avatar_cards" class="container-fluid d-flex flex-column align-items-center d-md-none">
+      </div>
+  `;
+  getUsersArray().then((data) => createUsersTable(getUsersClassArray(data)));
+}
+function getUsersClassArray(array) {
+  const usersArray = [];
+  array.forEach((entry) =>
+    usersArray.push(
+      new User(entry["name"], entry["age"], entry["email"], entry["phone"])
+    )
+  );
+  return usersArray;
+}
+function createUsersTable(array) {
+  console.log(array);
+  const allUsers = array.concat(NewUsers);
+  allUsers.forEach((entry) => addTableRow(entry));
+}
+function addTableRow(obj) {
+  table_body.innerHTML += `
+    <tr>
+    <td>${obj["name"]["first"]}</td>
+    <td>${obj["name"]["last"]}</td>
+    <td>${obj["age"]}</td>
+    <td>${obj["email"]}</td>
+    <td>${obj["phone"]}</td>
+    <td><div style="background-color:${obj["color"]};"class="avatar_div"><img class="avatar_img" src=${obj["picture"]}></div></td>
+    </tr>
+
+    `;
+  avatar_cards.innerHTML += ` 
+  <div style="  background-color:${obj["color"]};" class="container_avatar mb-3">
+    <img src="${obj["picture"]}" alt="Avatar" class="image_avatar">
+    <div class="overlay">
+      <div class="text">
+        <h3>First Name: ${obj["name"]["first"]}</h3>
+        <h3>Last Name: ${obj["name"]["last"]}</h3>
+        <h3>Age: ${obj["age"]}</h3>
+        <h3>Email: ${obj["email"]}</h3>
+        <h3>Phone: ${obj["phone"]}</h3>
+      </div>
+    </div>
+  </div>
+    `;
+}
+function changePage(location, event) {
+  event.preventDefault();
+  switch (location) {
+    case "Home":
+      loadMainPage();
+      break;
+    case "Products":
+      loadProductPage();
+      break;
+    case "About":
+      loadAboutPage();
+      break;
+    case "Users":
+      loadUsersPage();
+      break;
+    case "Contact":
+      loadContactPage();
+      break;
+  }
+}
+window.onload = () => {
+  loadMainPage();
+};

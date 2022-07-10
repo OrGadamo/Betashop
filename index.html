@@ -20,8 +20,9 @@
       <div class="container-fluid">
         <div class="d-flex flex-wrap align-items-center justify-content-start">
           <a
-            href="/"
+            href=""
             class="d-flex align-items-center justify-content-center text-decoration-none col-12 col-md-1"
+            onclick="changePage('Home',event)"
           >
             <img id="nav_icon" src="images/white_icon.png" alt="" />
           </a>
@@ -29,16 +30,45 @@
           <ul
             class="nav justify-content-center justify-content-md-start py-3 px-2 col-12 col-md-8"
           >
-            <li><a href="#" class="nav-link py-0 px-2 text-white">Home</a></li>
             <li>
-              <a href="#" class="nav-link py-0 px-2 text-white">Products</a>
+              <a
+                href=""
+                onclick="changePage('Home',event)"
+                class="nav-link py-0 px-2 text-white"
+                >Home</a
+              >
             </li>
-            <li><a href="#" class="nav-link py-0 px-2 text-white">About</a></li>
             <li>
-              <a href="#" class="nav-link py-0 px-2 text-white">Contact</a>
+              <a
+                href=""
+                onclick="changePage('Products',event)"
+                class="nav-link py-0 px-2 text-white"
+                >Products</a
+              >
             </li>
             <li>
-              <a href="#" class="nav-link py-0 px-2 text-white">nothing</a>
+              <a
+                href=""
+                onclick="changePage('About',event)"
+                class="nav-link py-0 px-2 text-white"
+                >About</a
+              >
+            </li>
+            <li>
+              <a
+                href=""
+                onclick="changePage('Contact',event)"
+                class="nav-link py-0 px-2 text-white"
+                >Contact</a
+              >
+            </li>
+            <li>
+              <a
+                href=""
+                onclick="changePage('Users',event)"
+                class="nav-link py-0 px-2 text-white"
+                >Users</a
+              >
             </li>
           </ul>
           <div
