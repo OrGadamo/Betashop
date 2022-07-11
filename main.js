@@ -1,7 +1,7 @@
 const deviceAPI =
   "https://my-json-server.typicode.com/Jeck99/fake-server/devices";
 const usersAPI = "https://my-json-server.typicode.com/Jeck99/fake-server/users";
-const NewUsers = [];
+const newUsers = [];
 const avatarArray = [
   "images/avatar1.png",
   "images/avatar2.png",
@@ -403,9 +403,12 @@ function loadMainPage() {
 }
 async function getDevices() {
   try {
+    card_display.innerHTML = `<img src="videos/loading_icon.gif" id="loading_gif" alt="">`;
     return await fetch(deviceAPI).then((res) => res.json());
   } catch (error) {
     console.log(error);
+  } finally {
+    loading_gif.style.display = "none";
   }
 }
 function loadProductPage() {
@@ -442,7 +445,6 @@ function displayCards(array) {
   array.forEach((entry) => {
     card_display.innerHTML += buildCard(entry);
   });
-  console.log(array);
 }
 function buildCard(object) {
   return `  
@@ -471,9 +473,7 @@ async function deleteDeviceFromAPI(id) {
   try {
     await fetch(deviceAPI + id, {
       method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data));
+    }).then((res) => res.json());
   } catch (error) {
     console.log(error);
   }
@@ -558,6 +558,7 @@ function loadContactPage() {
         action="https://formsubmit.co/brber223@gmail.com"
         method="POST"
       >
+      <input type="hidden" name="_next" value="https://orgadamo.github.io/Betashop/form.html">
         <div class="p-2 form-group boxinput">
           <label for="name">FULL NAME*</label>
           <input
@@ -615,9 +616,12 @@ function loadContactPage() {
 }
 async function getUsersArray() {
   try {
+    changer_main.innerHTML += `<img src="videos/loading_icon.gif" id="loading_gif" alt="">`;
     return await fetch(usersAPI).then((res) => res.json());
   } catch (error) {
     console.log(error);
+  } finally {
+    loading_gif.style.display = "none";
   }
 }
 function loadUsersPage() {
@@ -631,7 +635,7 @@ function loadUsersPage() {
         This page is for you, the companies to select the beta tester you desire.</br>
       And for you new users just click on the sign in button on top to register and enter our user list</h3>
       </div>
-      <div class="container-fluid d-none d-md-block">
+      <div id=""usertable_con" class="container-fluid d-none d-md-block">
         <table class="table table-dark table-hover">
           <thead>
             <th>First Name</th>
@@ -661,8 +665,7 @@ function getUsersClassArray(array) {
   return usersArray;
 }
 function createUsersTable(array) {
-  console.log(array);
-  const allUsers = array.concat(NewUsers);
+  const allUsers = array.concat(newUsers);
   allUsers.forEach((entry) => addTableRow(entry));
 }
 function addTableRow(obj) {
@@ -710,6 +713,62 @@ function changePage(location, event) {
     case "Contact":
       loadContactPage();
       break;
+  }
+}
+function displaySignUp() {
+  overlay_signup.style.display = "block";
+}
+function hideSignUp() {
+  overlay_signup.style.display = "none";
+}
+function signUserUp(e) {
+  e.preventDefault();
+  const newUser = new User(
+    {
+      first: document.forms["signup_form"]["first_name"].value,
+      last: document.forms["signup_form"]["last_name"].value,
+    },
+    document.forms["signup_form"]["age"].value,
+    document.forms["signup_form"]["email"].value,
+    document.forms["signup_form"]["phone"].value
+  );
+  MessageUserHeader(newUser["name"]["first"], newUser["name"]["last"]);
+  newUsers.push(newUser);
+  addUserToAPI(newUser);
+  endSignUp();
+}
+function endSignUp() {
+  first_name.value = "";
+  last_name.value = "";
+  age.value = "";
+  email.value = "";
+  phone.value = "";
+  hideSignUp();
+}
+function MessageUserHeader(userFirstName, userLastName) {
+  signup_btn_div.innerHTML = `
+  <h5>Hello ${userFirstName} ${userLastName} </h5>
+  <button onclick="logUserOut()" class="btn btn-danger btn-lg mx-2">
+  Log-Out
+</button>
+  `;
+}
+function logUserOut() {
+  signup_btn_div.innerHTML = `
+  <button onclick="displaySignUp()" class="btn btn-danger btn-lg">
+  Sign-Up
+</button>
+  `;
+}
+async function addUserToAPI(obj) {
+  try {
+    await fetch(usersAPI, {
+      method: "POST",
+      body: JSON.stringify(obj),
+      headers: { "Content-type": "appliction/json;" },
+    });
+  } catch (error) {
+    console.log(error);
   }
 }
 window.onload = () => {
