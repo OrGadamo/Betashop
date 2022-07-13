@@ -138,30 +138,41 @@ function loadMainPage() {
 </div>
 <div class="container-fluid bg-white my-5">
   <div class="row d-flex justify-content-between">
-    <div
-      class="col-8 p-4 text-center"
-    >
-      <h1 class="display-1 my-5">Welcome</h1>
-      <h3>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.</br> Dolorem
-        voluptate sint dolorum provident ea iusto tempore minus.</br> Deserunt
-        excepturi natus quisquam blanditiis cumque impedit unde.
-      </h3>
+  <div
+  class="col-7 p-5  "
+>
+  <h1 class="display-1 my-5 text-center">Welcome To BetaShop</h1>
+    <h2> BetaShop is a site that connects companies with a product that needs testing to Beta-Testers worldwide.</h2>
+    <h2>
+    Here a company can upload a request for testing a product and testers from all around the world with a variety of occupations and talents can apply to test that product.
+    Then the company can screen testers and search for specific requirements such as country, occupation, age and more to find their desired beta-testers.</h2>
+    <h2> Beta-Testers are obligated to write a review of the product by the standard that the company demanded, companies can rate the reviews written by testers and that rating will be saved on the tester information for future uses, such as screening testers by rating score average for quality reviews and testing.   
+    Another feature on our platform  is promotion and advertising, here at BetaShop companies can interact with influencers worldwide to promote their products.</h2>
+  <h2>
+   <strong> BetaShop is a site that Designed to find a unique way of testing products, save time in the testing stage , customize the products to a wider variety of users and improve end products for all our customers. </strong>
+  </h2>
     </div>
-    <img class="col-4 p-0" src="https://picsum.photos/200" alt="" />
+    <img class="col-5 p-0" src="images/test_ad.jpeg" alt="" />
   </div>
+</div>
+<div class="container-fluid bg-white my-5">
   <div class="row d-flex justify-content-between">
-    <img class="col-4 p-0" src="https://picsum.photos/200" alt="" />
-    <div
-      class="col-8 p-4 text-center"
-    >
-      <h1 class="display-1 my-5">Welcome</h1>
-      <h3>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.</br> Dolorem
-        voluptate sint dolorum provident ea iusto tempore minus.</br> Deserunt
-        excepturi natus quisquam blanditiis cumque impedit unde.
-      </h3>
-    </div>
+  <div class="row d-flex justify-content-between">
+  <img class="col-5 p-0" src="images/user_ad.jpeg" alt="" />
+  <div
+    class="col-7 p-4 "
+  >
+    <h1 class="display-1 my-5 text-center">Welcome To BetaShop</h1>
+    <h3>
+      BetaShop is a site that connects companies with a product that needs testing to Beta-Testers worldwide.</br>
+      Here a company can upload a request for testing a product and testers from all around the world with a variety of occupations and talents can apply to test that product.</br>
+      Then the company can screen testers and search for specific requirements such as country, occupation, age and more to find their desired beta-testers.</br>
+      Beta-Testers are obligated to write a review of the product by the standard that the company demanded, companies can rate the reviews written by testers and that rating will be saved on the tester information for future uses, such as screening testers by rating score average for quality reviews and testing.   
+      Another feature on our platform  is promotion and advertising, here at BetaShop companies can interact with influencers worldwide to promote their products.</br>
+     <strong> BetaShop is a site that Designed to find a unique way of testing products, save time in the testing stage , customize the products to a wider variety of users and improve end products for all our customers. </strong>
+    </h3>
+  </div>
+</div>
   </div>
 </div>
 <div class="container-fluid mb-3">
@@ -169,15 +180,15 @@ function loadMainPage() {
 </div>
 <div class="container-fluid pt-4 mb-5">
   <div class="row">
-    <img class="col-4 pb-3" src="https://picsum.photos/200" alt="">
+    <img class="col-4 pb-3" src="images/pixel_ad.jpg" alt="">
     <video class="col-8 pb-3" autoplay muted loop src="videos/google_pixel.webm"></video>
     <video class="col-8 pb-3" autoplay muted loop src="videos/samsung_galaxy.webm"></video>
-    <img class="col-4 pb-3" src="https://picsum.photos/200" alt="">
-    <img class="col-4 pb-3" src="https://picsum.photos/200" alt="">
+    <img class="col-4 pb-3" src="images/galaxy_ad.png" alt="">
+    <img class="col-4 pb-3" src="images/iphone_ad.jpg" alt="">
     <video class="col-8" autoplay muted loop src="videos/apple_iphone.webm"></video>
   </div>
   <div class="d-flex justify-content-center mt-5">
-    <button type="button" class="btn btn-outline-primary btn-lg">For All Available Product</button>
+    <button type="button" onclick="changePage('Products',event)" class="btn btn-outline-primary btn-lg">For All Available Product</button>
   </div>
 </div>
 <div class="container-fluid mb-3">
@@ -558,7 +569,7 @@ function loadContactPage() {
         action="https://formsubmit.co/brber223@gmail.com"
         method="POST"
       >
-      <input type="hidden" name="_next" value="https://orgadamo.github.io/Betashop/form.html">
+      <input type="hidden" name="_next" value="https://orgadamo.github.io/Betashop/pages/form.html">
         <div class="p-2 form-group boxinput">
           <label for="name">FULL NAME*</label>
           <input
