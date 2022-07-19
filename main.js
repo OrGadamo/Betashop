@@ -2,6 +2,7 @@ const deviceAPI =
   "https://my-json-server.typicode.com/Jeck99/fake-server/devices";
 const usersAPI = "https://my-json-server.typicode.com/Jeck99/fake-server/users";
 const newUsers = [];
+let devicesArray = [];
 const avatarArray = [
   "images/avatar1.png",
   "images/avatar2.png",
@@ -55,11 +56,12 @@ class Device {
   }
 }
 class User {
-  constructor(name, age, email, phone, picture, color) {
+  constructor(name, age, email, phone, id, picture, color) {
     this.name = name;
     this.age = age;
     this.email = email;
     this.phone = phone;
+    this.id = id;
     if (picture == null) {
       this.picture = avatarArray[Math.floor(Math.random() * 6)];
     } else {
@@ -73,6 +75,7 @@ class User {
   }
 }
 function loadMainPage() {
+  document.body.style.background = ``;
   changer_main.innerHTML = `
   <div id="myCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
   <div class="carousel-indicators">
@@ -139,7 +142,7 @@ function loadMainPage() {
 <div class="container-fluid bg-white my-5">
   <div class="row d-flex justify-content-between">
   <div
-  class="col-7 p-5  "
+  class="col-12 col-lg-7 p-5  "
 >
   <h1 class="display-1 my-5 text-center">Welcome To BetaShop</h1>
     <h2> BetaShop is a site that connects companies with a product that needs testing to Beta-Testers worldwide.</h2>
@@ -152,28 +155,24 @@ function loadMainPage() {
    <strong> BetaShop is a site that Designed to find a unique way of testing products, save time in the testing stage , customize the products to a wider variety of users and improve end products for all our customers. </strong>
   </h2>
     </div>
-    <img class="col-5 p-0" src="images/test_ad.jpeg" alt="" />
+    <img class="col-12 col-lg-5 p-0 " src="images/test_ad.jpeg" alt="" />
   </div>
 </div>
-<div class="container-fluid bg-white my-5">
-  <div class="row d-flex justify-content-between">
-  <div class="row d-flex justify-content-between">
-  <img class="col-5 p-0" src="images/user_ad.jpeg" alt="" />
+<div class="container-fluid bg-white my-5 d-lg-flex">
+<div class="row w-100 d-flex justify-content-between">
+  <img class="col-12 col-lg-5 p-0" src="images/user_ad.jpeg" alt="" />
   <div
-    class="col-7 p-4 "
+    class="col-12 col-lg-7 p-4 order-first order-lg-last d-flex flex-column align-items-center "
   >
-    <h1 class="display-1 my-5 text-center">Welcome To BetaShop</h1>
-    <h3>
-      BetaShop is a site that connects companies with a product that needs testing to Beta-Testers worldwide.</br>
-      Here a company can upload a request for testing a product and testers from all around the world with a variety of occupations and talents can apply to test that product.</br>
-      Then the company can screen testers and search for specific requirements such as country, occupation, age and more to find their desired beta-testers.</br>
-      Beta-Testers are obligated to write a review of the product by the standard that the company demanded, companies can rate the reviews written by testers and that rating will be saved on the tester information for future uses, such as screening testers by rating score average for quality reviews and testing.   
-      Another feature on our platform  is promotion and advertising, here at BetaShop companies can interact with influencers worldwide to promote their products.</br>
-     <strong> BetaShop is a site that Designed to find a unique way of testing products, save time in the testing stage , customize the products to a wider variety of users and improve end products for all our customers. </strong>
-    </h3>
+    <h1 class="display-1 my-5 text-center">For You Future Beta-Testers</h1>
+    <h2 class="mt-5"> Here in our site you can apply to test new cutting age technology<h2>
+    <h2>Take a part of the producing process</h2>
+   <h2> Make a diffrence on your favorite tech</h2>
+    <h2>Get a new beta device before anybody else and expirience it first</h2>
+    <h2><strong>SOO WHAT ARE YOU WAITING FOR? Join Now</strong></h2>
   </div>
 </div>
-  </div>
+
 </div>
 <div class="container-fluid mb-3">
   <hr class="hr-text" data-content="New Arrivals" />
@@ -203,7 +202,7 @@ function loadMainPage() {
   <div class="carousel-inner">
     <div class="carousel-item active" data-bs-interval="10000">
       <div class="container-fluid d-flex justify-content-center">
-        <div class="card col-2 mx-2">
+        <div class="card col-lg-2 col-4 mx-2">
           <div class="card-body">
             <i class="bi bi-star-fill" style="color:yellow"></i>
             <i class="bi bi-star-fill" style="color:yellow"></i>
@@ -215,7 +214,7 @@ function loadMainPage() {
             <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod quo pariatur repudiandae est sit dignissimos ducimus omnis, provident deserunt sequi!</p>
           </div>
         </div>
-        <div class="card col-2 mx-2">
+        <div class="card col-lg-2 col-4 mx-2">
           <div class="card-body">
             <i class="bi bi-star-fill" style="color:yellow"></i>
             <i class="bi bi-star-fill" style="color:yellow"></i>
@@ -227,7 +226,7 @@ function loadMainPage() {
             <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod quo pariatur repudiandae est sit dignissimos ducimus omnis, provident deserunt sequi!</p>
           </div>
         </div>
-        <div class="card col-2 mx-2">
+        <div class="card col-lg-2 col-4 mx-2">
           <div class="card-body">
             <i class="bi bi-star-fill" style="color:yellow"></i>
             <i class="bi bi-star-fill" style="color:yellow"></i>
@@ -239,7 +238,7 @@ function loadMainPage() {
             <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod quo pariatur repudiandae est sit dignissimos ducimus omnis, provident deserunt sequi!</p>
           </div>
         </div>
-        <div class="card col-2 mx-2">
+        <div class="card col-lg-2 col-4 d-none d-lg-block mx-2">
           <div class="card-body">
             <i class="bi bi-star-fill" style="color:yellow"></i>
             <i class="bi bi-star-fill" style="color:yellow"></i>
@@ -251,7 +250,7 @@ function loadMainPage() {
             <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod quo pariatur repudiandae est sit dignissimos ducimus omnis, provident deserunt sequi!</p>
           </div>
         </div>
-        <div class="card col-2 mx-2">
+        <div class="card col-lg-2 col-4 d-none d-lg-block mx-2">
           <div class="card-body">
             <i class="bi bi-star-fill" style="color:yellow"></i>
             <i class="bi bi-star-fill" style="color:yellow"></i>
@@ -268,7 +267,7 @@ function loadMainPage() {
     </div>
     <div class="carousel-item" data-bs-interval="2000">
       <div class="container-fluid d-flex justify-content-center">
-        <div class="card col-2 mx-2">
+        <div class="card col-lg-2 col-4 mx-2">
           <div class="card-body">
             <i class="bi bi-star-fill" style="color:yellow"></i>
             <i class="bi bi-star-fill" style="color:yellow"></i>
@@ -280,7 +279,7 @@ function loadMainPage() {
             <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod quo pariatur repudiandae est sit dignissimos ducimus omnis, provident deserunt sequi!</p>
           </div>
         </div>
-        <div class="card col-2 mx-2">
+        <div class="card col-lg-2 col-4 mx-2">
           <div class="card-body">
             <i class="bi bi-star-fill" style="color:yellow"></i>
             <i class="bi bi-star-fill" style="color:yellow"></i>
@@ -292,7 +291,7 @@ function loadMainPage() {
             <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod quo pariatur repudiandae est sit dignissimos ducimus omnis, provident deserunt sequi!</p>
           </div>
         </div>
-        <div class="card col-2 mx-2">
+        <div class="card col-lg-2 col-4 mx-2">
           <div class="card-body">
             <i class="bi bi-star-fill" style="color:yellow"></i>
             <i class="bi bi-star-fill" style="color:yellow"></i>
@@ -304,7 +303,7 @@ function loadMainPage() {
             <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod quo pariatur repudiandae est sit dignissimos ducimus omnis, provident deserunt sequi!</p>
           </div>
         </div>
-        <div class="card col-2 mx-2">
+        <div class="card col-lg-2 col-4 d-none d-lg-block mx-2">
           <div class="card-body">
             <i class="bi bi-star-fill" style="color:yellow"></i>
             <i class="bi bi-star-fill" style="color:yellow"></i>
@@ -316,7 +315,7 @@ function loadMainPage() {
             <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod quo pariatur repudiandae est sit dignissimos ducimus omnis, provident deserunt sequi!</p>
           </div>
         </div>
-        <div class="card col-2 mx-2">
+        <div class="card col-lg-2 col-4 d-none d-lg-block mx-2">
           <div class="card-body">
             <i class="bi bi-star-fill" style="color:yellow"></i>
             <i class="bi bi-star-fill" style="color:yellow"></i>
@@ -332,7 +331,7 @@ function loadMainPage() {
     </div>
     <div class="carousel-item">
       <div class="container-fluid d-flex justify-content-center">
-        <div class="card col-2 mx-2">
+        <div class="card col-lg-2 col-4 mx-2">
           <div class="card-body">
             <i class="bi bi-star-fill" style="color:yellow"></i>
             <i class="bi bi-star-fill" style="color:yellow"></i>
@@ -344,7 +343,7 @@ function loadMainPage() {
             <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod quo pariatur repudiandae est sit dignissimos ducimus omnis, provident deserunt sequi!</p>
           </div>
         </div>
-        <div class="card col-2 mx-2">
+        <div class="card col-lg-2 col-4 mx-2">
           <div class="card-body">
             <i class="bi bi-star-fill" style="color:yellow"></i>
             <i class="bi bi-star-fill" style="color:yellow"></i>
@@ -356,7 +355,7 @@ function loadMainPage() {
             <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod quo pariatur repudiandae est sit dignissimos ducimus omnis, provident deserunt sequi!</p>
           </div>
         </div>
-        <div class="card col-2 mx-2">
+        <div class="card col-lg-2 col-4 mx-2">
           <div class="card-body">
             <i class="bi bi-star-fill" style="color:yellow"></i>
             <i class="bi bi-star-fill" style="color:yellow"></i>
@@ -368,7 +367,7 @@ function loadMainPage() {
             <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod quo pariatur repudiandae est sit dignissimos ducimus omnis, provident deserunt sequi!</p>
           </div>
         </div>
-        <div class="card col-2 mx-2">
+        <div class="card col-lg-2 col-4 d-none d-lg-block mx-2">
           <div class="card-body">
             <i class="bi bi-star-fill" style="color:yellow"></i>
             <i class="bi bi-star-fill" style="color:yellow"></i>
@@ -380,7 +379,7 @@ function loadMainPage() {
             <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod quo pariatur repudiandae est sit dignissimos ducimus omnis, provident deserunt sequi!</p>
           </div>
         </div>
-        <div class="card col-2 mx-2">
+        <div class="card col-lg-2 col-4 d-none d-lg-block mx-2">
           <div class="card-body">
             <i class="bi bi-star-fill" style="color:yellow"></i>
             <i class="bi bi-star-fill" style="color:yellow"></i>
@@ -423,16 +422,88 @@ async function getDevices() {
   }
 }
 function loadProductPage() {
+  document.body.style.background = ``;
   changer_main.innerHTML = `
   <div class="container-fluid px-0 mb-5">
   <img src="images/product_pic.jpeg" class="w-100" alt="" />
   <h1 class="px-5 display-1">Beta-Products</h1>
   <h3 class="px-5 display-4">Here you can find all the available Beta Products to test.</br>If you are intested in testing please click on the product.</h3>
+  <div class="container p-5">
+  <nav
+    class="navbar navbar-expand bg-info p-3 rounded d-flex flex-column"
+  >
+    <div class="container-fluid">
+      <div class="row w-100">
+        <div class="d-flex col-12">
+          <select
+            class="form-select form-select-lg"
+            aria-label="Default select example"
+            onchange="loadSearchTopicOption()"
+            id="topic_select"
+          >
+            <option selected>Search Category</option>
+            <option value="ram">RAM</option>
+            <option value="brand">Brand</option>
+          </select>
+          <button type="submit" onclick="startSearch()" class="btn btn-primary btn-lg">
+            Search
+          </button>
+        </div>
+        <div id="option_div"></div>
+      </div>
+    </div>
+  </nav>
+</div>
 </div>
     <div class="container-fluid pt-5"> 
         <div id="card_display" class="row">
         </div>
-      </div>`;
+      </div>
+      <div
+      class="modal fade"
+      id="staticBackdrop"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">
+              Request Message
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <h1>Are you Sure?</h1>
+            <h4>Press submit to send your request</h4>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              data-bs-dismiss="modal"
+              class="btn btn-primary"
+            >
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>`;
   getDevices().then((data) => displayCards(getClassArray(data)));
 }
 function getClassArray(array) {
@@ -450,6 +521,7 @@ function getClassArray(array) {
       )
     )
   );
+  devicesArray = classArray;
   return classArray;
 }
 function displayCards(array) {
@@ -459,7 +531,8 @@ function displayCards(array) {
 }
 function buildCard(object) {
   return `  
-    <div id="${object["id"]}" class="card col-12 col-md-6 col-lg-4 position-relative">
+  <div id="${object["id"]}" class="col-12 col-md-6 col-lg-4 pb-5" >
+    <div class="card position-relative h-100">
     <i onclick="deleteCard(${object["id"]})"class="bi bi-x delete_btn"></i>
     <div class="d-flex justify-content-center">
       <img src=${object["picture"]} class="p-3 text-center device_pic" alt="..." />
@@ -472,7 +545,9 @@ function buildCard(object) {
         <h2>RAM: ${object["ram"]}</h2>
         <h2>Price:${object["price"]}</h2>
         <div class="color_circle" style="background-color:${object["color"]};"></div>
-      </div>
+        </div>
+        <button type="button" data-bs-toggle="modal"
+        data-bs-target="#staticBackdrop" class="btn btn-info position-absolute request_btn">Request Beta</button>
     </div>
   </div>`;
 }
@@ -490,8 +565,13 @@ async function deleteDeviceFromAPI(id) {
   }
 }
 function loadAboutPage() {
+  // document.body.style.background = `linear-gradient(
+  //   270deg,
+  //   rgba(66, 55, 143, 1) 0%,
+  //   rgba(245, 56, 68, 1) 100%
+  // // )`;
   changer_main.innerHTML = `
-    <h1 class="display-1 p-5 about_opener">About Us</h1>
+    <h1 class="display-1 p-5 ">About Us</h1>
     <div class="container-fluid bg-white">
       <div class="row">
         <img class="col-12 col-lg-6" src="images/team_about.jpg" alt="" />
@@ -533,23 +613,44 @@ function loadAboutPage() {
         </div>
       </div>
     </div>
-    <h1 class="display-2 about_opener p-3">We Are Looking For New Talents</h1>
-    <div class="container-fluid bg-white">
+    <h1 class="display-2 p-3">We Are Looking For New Talents</h1>
+    <div class="container-fluid bg-white mb-5">
       <div class="row">
-        <div class="col-12 col-lg-6">
-          <h3 class="display-3">Join Us</h3>
-          <p>
+        <div class="col-12 col-lg-6 d-flex flex-column align-items-center ">
+        <div class="container">
+          <h3 class="display-3 my-5 text-center">Join Us</h3>
+          <h5>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis
             saepe cupiditate officiis maiores similique minus eveniet repellat
             veniam, accusantium mollitia?
-          </p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis
+          saepe cupiditate officiis maiores similique minus eveniet repellat
+          veniam, accusantium mollitia?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis
+        saepe cupiditate officiis maiores similique minus eveniet repellat
+        veniam, accusantium mollitia?
+      </h5>
+      </div>
         </div>
         <img class="col-12 col-lg-6" src="images/join_about.jpg" alt="" />
+      </div>
+    </div>
+    <div class="container-fluid my-5">
+    <div class="row">
+      <img class="col-12 col-lg-6" src="images/office.jpg" alt="" />
+      <div
+        class="col-12 col-lg-6 d-flex flex-column align-items-center justify-content-center"
+      >
+      <h1 class="text-danger">Our offices are located at Lod,Israel</h1>
+      <h2 class="pb-5">Press the map for direction </h2>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1584.092145418002!2d34.892845006026214!3d31.95487871978377!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1502ca5931ac739f%3A0xdc4b1580616c867f!2sMagalcom%20Ltd.!5e0!3m2!1siw!2sil!4v1658264419855!5m2!1siw!2sil" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
       </div>
     </div>
     `;
 }
 function loadContactPage() {
+  document.body.style.background = ``;
   changer_main.innerHTML = `
     <div class="container card mt-5">
     <div class="row bg-white card-body">
@@ -636,6 +737,7 @@ async function getUsersArray() {
   }
 }
 function loadUsersPage() {
+  document.body.style.background = ``;
   changer_main.innerHTML = `
   <div class="container-fluid p-0">
         <img src="images/into_pic4.jpeg" class="col-12" alt="" />
@@ -670,7 +772,13 @@ function getUsersClassArray(array) {
   const usersArray = [];
   array.forEach((entry) =>
     usersArray.push(
-      new User(entry["name"], entry["age"], entry["email"], entry["phone"])
+      new User(
+        entry["name"],
+        entry["age"],
+        entry["email"],
+        entry["phone"],
+        entry["_id"]
+      )
     )
   );
   return usersArray;
@@ -681,13 +789,16 @@ function createUsersTable(array) {
 }
 function addTableRow(obj) {
   table_body.innerHTML += `
-    <tr>
+    <tr id="${obj["id"]}" >
     <td>${obj["name"]["first"]}</td>
     <td>${obj["name"]["last"]}</td>
     <td>${obj["age"]}</td>
     <td>${obj["email"]}</td>
     <td>${obj["phone"]}</td>
-    <td><div style="background-color:${obj["color"]};"class="avatar_div"><img class="avatar_img" src=${obj["picture"]}></div></td>
+    <td class="position-relative">
+    <button type="button" onclick="deleteUser('${obj["id"]}')" class="btn-close position-absolute top-0 end-0" aria-label="Close"></button>
+    <div style="background-color:${obj["color"]};"class="avatar_div"><img class="avatar_img" src=${obj["picture"]}></div>
+    </td>
     </tr>
 
     `;
@@ -705,6 +816,22 @@ function addTableRow(obj) {
     </div>
   </div>
     `;
+}
+function deleteRowTable(id) {
+  document.getElementById(id).style.display = "none";
+}
+async function deleteUserFromAPI(id) {
+  try {
+    return await fetch(`${usersAPI}/${id}`, { method: "DELETE" }).then((res) =>
+      res.json()
+    );
+  } catch (error) {
+    console.log(error);
+  }
+}
+function deleteUser(id) {
+  deleteRowTable(id);
+  deleteUserFromAPI(id);
 }
 function changePage(location, event) {
   event.preventDefault();
@@ -781,6 +908,217 @@ async function addUserToAPI(obj) {
   } catch (error) {
     console.log(error);
   }
+}
+function loadBrandSearchOption() {
+  option_div.innerHTML = `
+  
+  <div class="container-fluid">
+  <div class="form-check col-3">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      value="samsung"
+      id="flexCheckDefault"
+    />
+    <label class="form-check-label" for="flexCheckDefault">
+      SAMSUNG
+    </label>
+  </div>
+  <div class="form-check col-3">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      value="apple"
+      id="flexCheckChecked"
+      checked
+    />
+    <label class="form-check-label" for="flexCheckChecked">
+      Apple
+    </label>
+  </div>
+  <div class="form-check col-3">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      value="mi"
+      id="flexCheckChecked"
+      checked
+    />
+    <label class="form-check-label" for="flexCheckChecked">
+      Mi
+    </label>
+  </div>
+  <div class="form-check col-3">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      value="google"
+      id="flexCheckChecked"
+      checked
+    />
+    <label class="form-check-label" for="flexCheckChecked">
+      Google
+    </label>
+  </div>
+  <div class="form-check col-3">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      value="sony"
+      id="flexCheckChecked"
+      checked
+    />
+    <label class="form-check-label" for="flexCheckChecked">
+      Sony
+    </label>
+  </div>
+</div>
+  
+  `;
+}
+function loadRamSearchOption() {
+  option_div.innerHTML = `
+  <div class="container-fluid">
+  <div class="form-check col-3">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      value="4"
+      id="flexCheckDefault"
+    />
+    <label class="form-check-label" for="flexCheckDefault">
+      4GB
+    </label>
+  </div>
+  <div class="form-check col-3">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      value="6"
+      id="flexCheckChecked"
+      checked
+    />
+    <label class="form-check-label" for="flexCheckChecked">
+      6GB
+    </label>
+  </div>
+  <div class="form-check col-3">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      value="8"
+      id="flexCheckChecked"
+      checked
+    />
+    <label class="form-check-label" for="flexCheckChecked">
+      8GB
+    </label>
+  </div>
+  <div class="form-check col-3">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      value="16"
+      id="flexCheckChecked"
+      checked
+    />
+    <label class="form-check-label" for="flexCheckChecked">
+      16GB
+    </label>
+  </div>
+  <div class="form-check col-3">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      value="32"
+      id="flexCheckChecked"
+      checked
+    />
+    <label class="form-check-label" for="flexCheckChecked">
+      32GB
+    </label>
+  </div>
+</div>
+
+  `;
+}
+function resetSearchOption() {
+  option_div.innerHTML = "";
+}
+function loadSearchTopicOption() {
+  switch (topic_select.value) {
+    case "ram":
+      loadRamSearchOption();
+      break;
+    case "brand":
+      loadBrandSearchOption();
+      break;
+    default:
+      resetSearchOption();
+  }
+}
+function sortDeviceArrayByRam(optionsArr) {
+  const searchArray = devicesArray.filter((device) => {
+    for (let i = 0; i < optionsArr.length; i++) {
+      if (device.ram === optionsArr[i]) return true;
+    }
+  });
+  return searchArray;
+}
+function sortDeviceArrayByBrand(optionsArr) {
+  const searchArray = devicesArray.filter((device) => {
+    for (let i = 0; i < optionsArr.length; i++) {
+      if (device.brand === optionsArr[i]) return true;
+    }
+  });
+  return searchArray;
+}
+function startSearch() {
+  let checkBoxs = document.getElementsByClassName("form-check-input");
+  switch (topic_select.value) {
+    case "ram":
+      card_display.innerHTML = "";
+      displayCards(sortDeviceArrayByRam(getRamOptionArray(checkBoxs)));
+      break;
+    case "brand":
+      card_display.innerHTML = "";
+      displayCards(sortDeviceArrayByBrand(getBrandOptionArray(checkBoxs)));
+      break;
+  }
+  if (card_display.innerHTML == "")
+    card_display.innerHTML = "<h1>NO RESULTS</h1>";
+}
+function getBrandOptionArray(checkBoxsArr) {
+  let searchOption = [];
+  for (let input of checkBoxsArr) {
+    if (input.checked) {
+      switch (input.value) {
+        case "apple":
+          searchOption.push("images/apple.png");
+          break;
+        case "mi":
+          searchOption.push("images/mi.png");
+          break;
+        case "samsung":
+          searchOption.push("images/samsung.png");
+          break;
+        case "sony":
+          searchOption.push("images/sony.png");
+          break;
+        case "google":
+          searchOption.push("images/google.png");
+          break;
+      }
+    }
+  }
+  return searchOption;
+}
+function getRamOptionArray(checkBoxsArr) {
+  let searchOption = [];
+  for (let input of checkBoxsArr) {
+    if (input.checked) searchOption.push(input.value);
+  }
+  return searchOption;
 }
 window.onload = () => {
   loadMainPage();
