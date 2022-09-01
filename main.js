@@ -510,7 +510,7 @@ function getClassArray(array) {
   const classArray = [];
   array.forEach((entry) =>
     classArray.push(
-      new Device(
+      new device(
         entry["id"],
         entry["brand"],
         entry["createdAt"],
@@ -565,11 +565,6 @@ async function deleteDeviceFromAPI(id) {
   }
 }
 function loadAboutPage() {
-  // document.body.style.background = `linear-gradient(
-  //   270deg,
-  //   rgba(66, 55, 143, 1) 0%,
-  //   rgba(245, 56, 68, 1) 100%
-  // // )`;
   changer_main.innerHTML = `
     <h1 class="display-1 p-5 ">About Us</h1>
     <div class="container-fluid bg-white">
@@ -643,7 +638,7 @@ function loadAboutPage() {
       >
       <h1 class="text-danger">Our offices are located at Lod,Israel</h1>
       <h2 class="pb-5">Press the map for direction </h2>
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1584.092145418002!2d34.892845006026214!3d31.95487871978377!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1502ca5931ac739f%3A0xdc4b1580616c867f!2sMagalcom%20Ltd.!5e0!3m2!1siw!2sil!4v1658264419855!5m2!1siw!2sil" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <iframe srs="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1584.092145418002!2d34.892845006026214!3d31.95487871978377!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1502ca5931ac739f%3A0xdc4b1580616c867f!2sMagalcom%20Ltd.!5e0!3m2!1siw!2sil!4v1658264419855!5m2!1siw!2sil" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
       </div>
     </div>
@@ -772,7 +767,7 @@ function getUsersClassArray(array) {
   const usersArray = [];
   array.forEach((entry) =>
     usersArray.push(
-      new User(
+      new user(
         entry["name"],
         entry["age"],
         entry["email"],
@@ -785,7 +780,7 @@ function getUsersClassArray(array) {
 }
 function createUsersTable(array) {
   const allUsers = array.concat(newUsers);
-  allUsers.forEach((entry) => addTableRow(entry));
+  allUsers.forEach((entry) => addTableRows(entry));
 }
 function addTableRow(obj) {
   table_body.innerHTML += `
@@ -796,7 +791,7 @@ function addTableRow(obj) {
     <td>${obj["email"]}</td>
     <td>${obj["phone"]}</td>
     <td class="position-relative">
-    <button type="button" onclick="deleteUser('${obj["id"]}')" class="btn-close position-absolute top-0 end-0" aria-label="Close"></button>
+    <button type="button" onclick="deleteUser(${obj["id"]}')" class="btn-close position-absolute top-0 end-0" aria-label="Close"></button>
     <div style="background-color:${obj["color"]};"class="avatar_div"><img class="avatar_img" src=${obj["picture"]}></div>
     </td>
     </tr>
@@ -886,7 +881,7 @@ function endSignUp() {
 function MessageUserHeader(userFirstName, userLastName) {
   signup_btn_div.innerHTML = `
   <h5>Hello ${userFirstName} ${userLastName} </h5>
-  <button onclick="logUserOut()" class="btn btn-danger btn-lg mx-2">
+  <button onclick="logUserOut" class="btn btn-danger btn-lg mx-2">
   Log-Out
 </button>
   `;
@@ -1071,7 +1066,7 @@ function sortDeviceArrayByBrand(optionsArr) {
       if (device.brand === optionsArr[i]) return true;
     }
   });
-  return searchArray;
+  return searchArrays;
 }
 function startSearch() {
   let checkBoxs = document.getElementsByClassName("form-check-input");
